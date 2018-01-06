@@ -4,7 +4,6 @@ from PythonQt.QtGui import QWidget, QDialog, QDesktopServices, QIcon, QStandardI
 from PythonQt.QtUiTools import QUiLoader
 import ftplib, time
 
-
 class FTPSUploader():
     def __init__(self):
         self.uil = QUiLoader()
@@ -41,7 +40,7 @@ class FTPSUploader():
     def saveSettings(self):
         settings = QSettings()
         settings.beginGroup("uploaders")
-        settings.beginGroup("ftp")
+        settings.beginGroup("ftps")
         settings.setValue("host", self.settingsDialog.group_server.input_host.text)
         settings.setValue("port", int(self.settingsDialog.group_server.input_port.value))
         settings.setValue("username", self.settingsDialog.group_server.input_username.text)
@@ -65,12 +64,10 @@ class FTPSUploader():
 
         timestamp = time.time()
         try:
-            tmpFilename = QDesktopServices.storageLocation(
-                QDesktopServices.TempLocation) + "/" + ScreenCloud.formatFilename(str(timestamp))
+            tmpFilename = QDesktopServices.storageLocation(QDesktopServices.TempLocation) + "/" + ScreenCloud.formatFilename(str(timestamp))
         except AttributeError:
             from PythonQt.QtCore import QStandardPaths  # fix for Qt5
-            tmpFilename = QStandardPaths.writableLocation(
-                QStandardPaths.TempLocation) + "/" + ScreenCloud.formatFilename(str(timestamp))
+            tmpFilename = QStandardPaths.writableLocation(QStandardPaths.TempLocation) + "/" + ScreenCloud.formatFilename(str(timestamp))
         screenshot.save(QFile(tmpFilename), ScreenCloud.getScreenshotFormat())
 
         # Old: ftp = ftplib.FTP()
