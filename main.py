@@ -5,7 +5,7 @@ from PythonQt.QtUiTools import QUiLoader
 import ftplib, time
 
 
-class FTPUploader():
+class FTPSUploader():
     def __init__(self):
         self.uil = QUiLoader()
 
@@ -27,7 +27,7 @@ class FTPUploader():
     def loadSettings(self):
         settings = QSettings()
         settings.beginGroup("uploaders")
-        settings.beginGroup("ftp")
+        settings.beginGroup("ftps")
         self.host = settings.value("host", "")
         self.port = int(settings.value("port", 21))
         self.username = settings.value("username", "")
