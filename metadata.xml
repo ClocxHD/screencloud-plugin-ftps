@@ -1,0 +1,7 @@
+<metadata>
+    <name>FTPS</name>
+    <shortname>ftps</shortname>
+    <className>FTPSUploader</className>
+    <icon>icon.png</icon>
+    <version>1.0</version>
+</metadata>
